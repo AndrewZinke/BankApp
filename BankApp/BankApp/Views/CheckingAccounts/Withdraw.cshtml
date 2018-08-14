@@ -1,0 +1,57 @@
+﻿@model BankApp.Models.CheckingAccount
+
+@{
+    ViewBag.Title = "Withdraw";
+}
+
+<h2>Withdraw</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Checking Account</h4>
+        <h2>@ViewBag.WithdrawDenied</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CustomerId)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Active)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.Id, "Account Id:")
+                @Html.DisplayFor(modelItem => Model.Id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(Model => Model.Balance, "Amount To Withdraw:")
+                @Html.EditorFor(Model => Model.Balance, new { @Value = "0.00" })
+                @Html.ValidationMessageFor(model => model.Balance, "", new { @Value = "0.00" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Withdraw" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.CustomerId })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

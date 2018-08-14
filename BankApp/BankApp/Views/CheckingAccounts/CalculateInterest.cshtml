@@ -1,0 +1,38 @@
+﻿@model BankApp.Models.CheckingAccount
+
+@{
+    ViewBag.Title = "CalculateInterest";
+}
+
+<h2>Potential Interest</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <p>Account Number:</p>
+        </th>
+        <th>
+            <p> Potential interest applied to Account</p>
+        </th>
+        <th></th>
+    </tr>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Id)
+            </td>
+            <td>
+                @String.Format("{0:c}", Model.Balance)
+            </td>
+
+        </tr>
+    
+
+</table>
+
+<p>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.CustomerId })
+</p>
+

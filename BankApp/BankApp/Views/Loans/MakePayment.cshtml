@@ -1,0 +1,50 @@
+﻿@model BankApp.Models.Loan
+
+@{
+    ViewBag.Title = "LoanPayment";
+}
+
+<h2>Make a Payment to the selected Loan</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.LoanId)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CustomerId)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Active)
+
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(Model => Model.Amount, "Payment Amount:")
+                @Html.EditorFor(Model => Model.Amount, new { @Value = "0.00" })
+                @Html.ValidationMessageFor(model => model.Amount, "", new { @Value = "0.00" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Make Payment" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.CustomerId })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

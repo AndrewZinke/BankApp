@@ -1,0 +1,65 @@
+﻿@model BankApp.Models.CheckingAccount
+
+@{
+    ViewBag.Title = "Deposit";
+}
+
+<h2>Deposit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>BusinessAccount</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CustomerId)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Active)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.Id, "Account Id:")
+                @Html.DisplayFor(modelItem => Model.Id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(Model => Model.Balance, "Amount To Deposit:")
+                @Html.EditorFor(Model => Model.Balance, new { @Value = "0.00" })
+                @Html.ValidationMessageFor(model => model.Balance, "", new { @Value = "0.00" })
+            </div>
+        </div>
+
+        @*<div class="form-group">*@
+        @*@Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Active)
+                        @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.CustomerId })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

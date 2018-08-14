@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BankApp.Models.BusinessAccount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Business Accounts:</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { id = @ViewBag.CustomerId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p>Account Number:</p>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @String.Format("{0:c}", item.Balance)
+                @*  @Html.DisplayFor(modelItem => item.Balance)*@
+            </td>
+            <td>
+                @Html.ActionLink("View Transactions", "ViewTransactions", new { id = item.Id }) |
+                @Html.ActionLink("Withdraw", "Withdraw", new { id = item.Id }) |
+                @Html.ActionLink("Deposit", "Deposit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Close", "Close", new { id = item.Id })
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+<h6>Please note any amount within () parenthesis is a negative balance.</h6>
+<div>
+    @Html.ActionLink("Back to Customer Details", "BackToCustomer", new { id = ViewBag.CustomerId })
+</div>

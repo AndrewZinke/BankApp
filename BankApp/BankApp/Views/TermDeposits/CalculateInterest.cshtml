@@ -1,0 +1,50 @@
+﻿@model BankApp.Models.TermDeposit
+
+@{
+    ViewBag.Title = "CalculateInterest";
+}
+
+<h2>Potential Interest</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <p>Term Deposit:</p>
+        </th>
+        <th>
+            <p> Potential interest applied to Account</p>
+        </th>
+        <th>
+            Interest Rate for selected Term Deposit
+        </th>
+        <th>
+            Able to Withdraw from Term Deposit
+        </th>
+        <th></th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Id)
+        </td>
+        <td>
+            @String.Format("{0:c}", Model.Amount)
+        </td>
+        <td>
+            @String.Format("{0:P2}.", Model.InterestRate)
+        </td>
+        <td>
+            @Model.HasMatured.ToString()
+        </td>
+
+    </tr>
+
+
+</table>
+
+<p>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.CustomerId })
+</p>
+

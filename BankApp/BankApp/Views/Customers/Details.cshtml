@@ -1,0 +1,51 @@
+﻿@model BankApp.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.CustomerId = Model.Id;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <br />
+    @Html.ActionLink("View Business Accounts", "GetBusinessAccounts", new { id = Model.Id })
+    <br />
+    @Html.ActionLink("View Checking Accounts", "GetCheckingAccounts", new { id = Model.Id })
+    <br />
+    @Html.ActionLink("View Loan Information", "GetLoanInformation", new { id = Model.Id })
+    <br />
+    @Html.ActionLink("View Term Deposits", "GetTermDeposits", new { id = Model.Id })
+    <br />
+    @Html.ActionLink("Back to List", "Index")
+</p>
