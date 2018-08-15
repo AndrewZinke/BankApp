@@ -1,0 +1,17 @@
+﻿@model BankApp.Models.Customer
+
+@{
+    ViewBag.Title = "WithdrawDenied";
+}
+
+<h1>Withdraw Denied</h1>
+<p>Unable to allow withdrawls from the selected Term Deposit</p>
+<p>This can be due to the Term Deposit not Matured enough, or that the withdraw amount was greater than the amount within the term deposit</p>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.HiddenFor(model => model.Id)
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.Id })
+</div>

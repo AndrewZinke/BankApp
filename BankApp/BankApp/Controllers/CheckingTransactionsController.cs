@@ -19,7 +19,7 @@ namespace BankApp.Controllers
         {
             var checkingTransaction = db.CheckingTransaction.Include(b => b.Account);
             ViewBag.CustomerId = checkingTransaction.First().CustomerId;
-            return View(checkingTransaction.ToList().Where(b => (b.AccountId == id)));
+            return View(checkingTransaction.ToList().Where(c=> (c.AccountId == id)).OrderByDescending(c => c.DateOfTransaction).Take(10));
         }
 
         // GET: CheckingTransactions/Details/5

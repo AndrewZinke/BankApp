@@ -6,14 +6,9 @@
 
 <h2>Transactions</h2>
 
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AccountId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Customer.FirstName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.DateOfTransaction)
         </th>
@@ -30,12 +25,6 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AccountId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.FirstName)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.DateOfTransaction)
             </td>
             <td>
@@ -51,7 +40,7 @@
 </table>
 
 <div>
-    @Html.ActionLink("Back to Accounts","BackToAccounts", new { id = ViewBag.CustomerId})
+    @Html.ActionLink("Back to Accounts", "BackToAccounts", new { id = ViewBag.CustomerId })
 </div>
 
 

@@ -204,6 +204,7 @@
     <Compile Include="Controllers\LoansController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TermDepositsController.cs" />
+    <Compile Include="Controllers\TransfersController.cs" />
     <Compile Include="Filters\DebugFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -260,6 +261,14 @@
     <Compile Include="Migrations\201808141352348_TDMaturity.Designer.cs">
       <DependentUpon>201808141352348_TDMaturity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808141751170_TransfersAdded.cs" />
+    <Compile Include="Migrations\201808141751170_TransfersAdded.Designer.cs">
+      <DependentUpon>201808141751170_TransfersAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808141753125_UpdatedTransfer.cs" />
+    <Compile Include="Migrations\201808141753125_UpdatedTransfer.Designer.cs">
+      <DependentUpon>201808141753125_UpdatedTransfer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountsVM.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -275,6 +284,7 @@
     <Compile Include="Models\Loan.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TermDeposit.cs" />
+    <Compile Include="Models\Transfer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -380,6 +390,15 @@
     <Content Include="Views\CheckingAccounts\CalculateInterest.cshtml" />
     <Content Include="Views\TermDeposits\CalculateInterest.cshtml" />
     <Content Include="Views\TermDeposits\Withdraw.cshtml" />
+    <Content Include="Views\BusinessAccounts\TransferToChecking.cshtml" />
+    <Content Include="Views\Transfers\Create.cshtml" />
+    <Content Include="Views\Transfers\Delete.cshtml" />
+    <Content Include="Views\Transfers\Details.cshtml" />
+    <Content Include="Views\Transfers\Edit.cshtml" />
+    <Content Include="Views\Transfers\Index.cshtml" />
+    <Content Include="Views\CheckingAccounts\WithdrawDenied.cshtml" />
+    <Content Include="Views\TermDeposits\WithdrawDenied.cshtml" />
+    <Content Include="Views\BusinessAccounts\WithdrawDenied.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -436,6 +455,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808141352348_TDMaturity.resx">
       <DependentUpon>201808141352348_TDMaturity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808141751170_TransfersAdded.resx">
+      <DependentUpon>201808141751170_TransfersAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808141753125_UpdatedTransfer.resx">
+      <DependentUpon>201808141753125_UpdatedTransfer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

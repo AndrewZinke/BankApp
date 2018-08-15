@@ -33,7 +33,7 @@
                 @String.Format("{0:c}", item.Amount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.InterestRate)
+                @String.Format("{0:P2}.", item.InterestRate)
             </td>
             <td>
                 @Html.ActionLink("Calculate Interest (details)", "CalculateInterest", new { id = item.Id }) |

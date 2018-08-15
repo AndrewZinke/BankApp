@@ -1,0 +1,16 @@
+﻿@model BankApp.Models.Customer
+
+@{
+    ViewBag.Title = "WithdrawDenied";
+}
+
+<h1>Withdraw Denied</h1>
+<p>You are not authorized to withdraw past -$100.00. on this business account</p>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.HiddenFor(model => model.Id)
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.Id })
+</div>

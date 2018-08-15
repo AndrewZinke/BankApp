@@ -192,7 +192,7 @@ namespace BankApp.Controllers
                     termDeposit.Amount = (double) TempData["tdAmount"];
                     if (withDrawAmount > termDeposit.Amount)
                     {
-                        return RedirectToAction("Index", new { id = termDeposit.CustomerId });
+                        return RedirectToAction("WithdrawDenied", new { id = termDeposit.CustomerId });
                     }
                     else
                     {
@@ -203,7 +203,7 @@ namespace BankApp.Controllers
                     }
                 }
             }
-            return RedirectToAction("Index", new { id = termDeposit.CustomerId });
+            return RedirectToAction("WithdrawDenied", new { id = termDeposit.CustomerId });
         }
 
         public ActionResult BackToCustomer(int? id)
@@ -211,6 +211,14 @@ namespace BankApp.Controllers
             Customer c = new Customer();
             c.Id = (int)id;
             return RedirectToAction("Details", "Customers", new { id = c.Id });
+        }
+
+        //redirects to WithdrawDenied View
+        public ActionResult WithdrawDenied(int? id)
+        {
+            var c = new Customer();
+            c.Id = (int)id;
+            return View(c);
         }
 
     }//end of controller

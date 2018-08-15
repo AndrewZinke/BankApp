@@ -22,5 +22,7 @@ namespace BankApp.Models
         public System.Data.Entity.DbSet<BankApp.Models.Loan> Loans { get; set; }
 
         public System.Data.Entity.DbSet<BankApp.Models.TermDeposit> TermDeposits { get; set; }
+
+        public System.Data.Entity.DbSet<BankApp.Models.Transfer> Transfers { get; set; }
     }
 }

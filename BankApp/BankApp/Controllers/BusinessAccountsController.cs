@@ -70,8 +70,8 @@ namespace BankApp.Controllers
                 double negativeAmount;
                 if(businessAccount.Balance - withDrawAmount < -100)
                 {
-                    ViewBag.WithdrawDenied = "You have attempted to withdraw over your limit";
-                    return RedirectToAction("Index", new { id = businessAccount.CustomerId });
+                    //ViewBag.WithdrawDenied = "You have attempted to withdraw over your limit";
+                    return RedirectToAction("WithdrawDenied", new { id = businessAccount.CustomerId });
                 }
                 else if (businessAccount.Balance - withDrawAmount < 0)
                 {
@@ -260,11 +260,28 @@ namespace BankApp.Controllers
             base.Dispose(disposing);
         }
 
+        //Redirects to Customer Details View based on the given id
         public ActionResult BackToCustomer(int? id)
         {
             Customer c = new Customer();
-            c.Id = (int) id;
+            c.Id = (int)id;
             return RedirectToAction("Details", "Customers", new { id = c.Id });
+        }
+
+
+        public ActionResult Transfer(int? id)
+        {
+            var c = new Customer();
+            c.Id = (int) id;
+            return RedirectToAction("Create", "Transfers", c);
+        }
+
+        //redirects to WithdrawDenied View
+        public ActionResult WithdrawDenied(int? id)
+        {
+            var c = new Customer();
+            c.Id = (int)id;
+            return View(c);
         }
 
     }

@@ -20,7 +20,8 @@ namespace BankApp.Controllers
         {
             var businessTransaction = db.BusinessTransactions.Include(b => b.BusinessAccount);
             ViewBag.CustomerId = businessTransaction.First().CustomerId;
-            return View(businessTransaction.ToList().Where(b => (b.AccountId == id )));
+            ViewBag.CustomerName = businessTransaction.First().Customer.FirstName;
+            return View(businessTransaction.ToList().Where(b => (b.AccountId == id )).OrderByDescending(b => b.DateOfTransaction).Take(10));
         }
 
         // GET: BusinessTransactions/Details/5

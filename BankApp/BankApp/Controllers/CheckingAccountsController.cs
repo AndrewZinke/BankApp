@@ -69,7 +69,7 @@ namespace BankApp.Controllers
                 checkingAccount.Balance = (double)TempData["CheckingBalance"];
                 if(withdrawAmount > checkingAccount.Balance)
                 {
-                    return RedirectToAction("Index", new { id = checkingAccount.CustomerId });
+                    return RedirectToAction("WithdrawDenied", new { id = checkingAccount.CustomerId });
                 }
                 else
                 {
@@ -261,6 +261,15 @@ namespace BankApp.Controllers
             c.Id = (int)id;
             return RedirectToAction("Details", "Customers", new { id = c.Id });
         }
+
+        //redirects to WithdrawDenied View
+        public ActionResult WithdrawDenied(int? id)
+        {
+            var c = new Customer();
+            c.Id =(int) id;
+            return View(c);            
+        }
+
 
     }
 }

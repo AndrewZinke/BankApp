@@ -7,8 +7,8 @@
 <h2>Close an Account</h2>
 
 <h3>Are you sure you want to close this Account?</h3>
+<h6>Any money left in the account will be "dontated" to the bank.</h6>
 <div>
-    <h4>BusinessAccount</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Balance)
+            @String.Format("{0:c}", Model.Balance)
         </dd>
 
     </dl>
@@ -34,8 +34,11 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Close" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index", new { id = Model.CustomerId })
+            <input type="submit" value="Close" class="btn btn-default" /> 
+        </div>
+        <br />
+        <div>
+               @Html.ActionLink("Back to List", "Index", new { id = Model.CustomerId })
         </div>
     }
 </div>
